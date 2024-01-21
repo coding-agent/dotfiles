@@ -1,13 +1,16 @@
 indicator
 ignore-empty-password
-indicator-thickness=15
-indicator-radius=150
+indicator-thickness=2
+indicator-radius=100
 image=~/dev/wallpapers/rem_wallpaper.jpeg
 clock
 effect-blur=7x5
 effect-vignette=0.5:0.5
-ringcolor=057595
-text-color=000000
+ring-color=aaaaff
+line-color=5080ee
+inside-color=00000088
+key-hl-color=bb60ff
+text-color=ffffff
 grace=2
 fade-in=0.5
 font=HeavyData Nerd Font
