@@ -21,7 +21,6 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
 	'tsserver',
-	'zls',
 	'lua_ls',
     'jsonls',
     'html',
@@ -33,3 +32,5 @@ require('mason-lspconfig').setup({
     lsp.default_setup,
   },
 })
+
+require('lspconfig').zls.setup {}
