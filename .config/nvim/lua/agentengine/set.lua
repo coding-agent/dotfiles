@@ -18,4 +18,7 @@ vim.opt.termguicolors = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
+
+vim.opt.signcolumn = "yes"
+
 vim.cmd.colorscheme('aqua')
