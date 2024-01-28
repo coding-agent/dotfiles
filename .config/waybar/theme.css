@@ -1,1 +1,10 @@
-/home/coding-agent/.config/waybar/theme.css
+@define-color base   	rgba(46, 142, 218, 0.2);
+@define-color base2   	rgba(46, 142, 218, 0.1);	
+@define-color crust  	grey;
+
+@define-color text     	white;
+@define-color subtext	black;
+
+@define-color blue      #18238C;
+@define-color lavender  #00297B;
+

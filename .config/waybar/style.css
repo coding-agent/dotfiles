@@ -1,1 +1,158 @@
-/home/coding-agent/.config/waybar/style.css
+@import "theme.css";
+
+* {
+	border: none;
+	border-radius: 0;
+	font-family: "HeavyData Nerd Font";
+	font-size: 14px;
+	min-height: 18px;
+}
+
+window#waybar {
+	background: rgba(1,1,1,0.6);
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+#window {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    transition: none;
+    color: transparent;
+    background: transparent;
+}
+
+window#waybar.termite #window,
+window#waybar.Firefox #window,
+window#waybar.Navigator #window,
+window#waybar.PCSX2 #window {
+    color: @text;
+    background: @lavander;
+}
+
+#workspaces {
+	background: @base;
+	transition: transform 250ms ease-in-out;
+}
+
+#workspaces button {
+    padding: 10px;
+	transition: none;
+	color: @text;
+	background: @base2;
+	font-size: 16px;
+}
+
+#workspaces button.active {
+	color: @text;
+   	background: @base;
+}
+
+#workspaces button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: @subtext;
+	background: white;
+}
+
+#pulseaudio {
+	padding-left: 8px;
+	padding-right: 8px;
+	transition: transform 250ms ease-in-out;
+	color: @text;
+	background: transparent;
+}
+
+#mpris {
+	padding-left: 16px;
+	padding-right: 16px;
+	transition: transform 250ms ease-in-out;
+	color: @text;
+	background: @base;
+}
+
+#mpris:hover {
+	background: @base;
+}
+
+#temperature {
+	padding-left: 16px;
+	padding-right: 16px;
+	transition: none;
+	color: @text;
+	background: transparent;
+}
+
+#cpu {
+	padding-left: 16px;
+	padding-right: 16px;
+	transition: none;
+	color: @text;
+	background: transparent;
+}
+
+#memory {
+	padding-left: 16px;
+	padding-right: 16px;
+	transition: none;
+	color: @text;
+	background: transparent;
+}
+
+#battery {
+	padding-left: 8px;
+	padding-right: 8px;
+	transition: none;
+	color: @text;
+	background: transparent;
+}
+
+#clock {
+	padding-left: 8px;
+	padding-right: 8px;
+	transition: none;
+	color: @text;
+	background: transparent;;
+}
+
+#gamemode {
+	margin-top: 4px;
+	margin-left: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-bottom: 0;
+	transition: none;
+	color: @text;
+	background: @red;
+}
+
+#tray {
+	margin-left: 8px;
+	margin-right: 12px;
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-bottom: 0;
+	transition: none;
+	background: transparent;
+}
+
+window#waybar.empty #window {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background-color: transparent;
+}
+
+#window {
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-bottom: 0;
+	transition: none;
+	color: @text;
+	background: @base;
+}
