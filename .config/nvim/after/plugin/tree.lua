@@ -14,5 +14,4 @@ require("nvim-tree").setup({
   },
 })
 
-vim.cmd.NvimTreeOpen()
 vim.keymap.set("n", "<leader>tt", vim.cmd.NvimTreeToggle)
