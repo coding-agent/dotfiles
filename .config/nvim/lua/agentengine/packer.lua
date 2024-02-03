@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'wakatime/vim-wakatime'
     use 'nvim-lualine/lualine.nvim'
+    use 'norcalli/nvim-colorizer.lua'
 
     use {
   	'nvim-telescope/telescope.nvim', tag = '0.1.5',
