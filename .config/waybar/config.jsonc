@@ -2,12 +2,18 @@
   "spacing": 4,
   "layer": "top",
   "modules-left": [
+    "hyprland/workspaces",
+    //"river/tags",
     "hyprland/window"
+    //"river/window"
   ],
   "modules-center": [
-    "hyprland/workspaces"
   ],
   "modules-right": [
+    "network",
+    "temperature",
+    "cpu",
+    "memory",
     "pulseaudio",
     "gamemode",
     "battery",
@@ -45,7 +51,7 @@
   },
   "clock": {
     "format": "{:%H:%M}",
-    "format-alt": "{:%d %B %Y (%R)}",
+    "format-alt": "{:%d %B %Y}",
     "tooltip-format": "{calendar}", 
   	"actions": {
   		"on-click-right": "mode",
@@ -56,13 +62,18 @@
   	}
   },
   "cpu": {
-    "format": "{usage}% "
+    "format": "{usage}% {icon}",
+    "format-icons": [
+        "󰾆",
+        "󰾅",
+        "󰓅"
+    ]
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% "
   },
   "temperature": {
-    "critical-threshold": 80,
+    "critical-threshold": 60,
     "format": "{temperatureC}°C {icon}",
     "format-icons": [
       "",
@@ -86,6 +97,13 @@
       "",
       ""
     ]
+  },
+  "network": {
+    "format-wifi": "{essid} ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} 󰈀",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     "format": "{volume}% ",
