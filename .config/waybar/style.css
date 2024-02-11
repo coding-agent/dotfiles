@@ -3,9 +3,9 @@
 * {
 	border: none;
 	border-radius: 0;
-	font-family: "HeavyData Nerd Font";
-	font-size: 14px;
+	font-family: "HeavyData Nerd Font 14";
 	min-height: 18px;
+	transition: transform 250ms ease-in-out;
 }
 
 window#waybar {
@@ -23,12 +23,12 @@ window#waybar.hidden {
     padding-right: 8px;
 }
 
-#workspaces {
+#workspaces, #tags  {
 	background: @base;
-	transition: transform 250ms ease-in-out;
 }
 
-#workspaces button {
+#workspaces button,
+#tags button{
     padding: 10px;
 	transition: none;
 	color: @text;
@@ -36,12 +36,14 @@ window#waybar.hidden {
 	font-size: 16px;
 }
 
-#workspaces button.active {
+#workspaces button.active,
+#tags button.focused {
 	color: @text;
    	background: @active;
 }
 
-#workspaces button:hover {
+#workspaces button:hover,
+#tags button:hover{
 	transition: none;
 	box-shadow: inherit;
 	text-shadow: inherit;

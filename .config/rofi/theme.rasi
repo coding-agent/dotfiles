@@ -11,7 +11,7 @@
     alt-color: #000010FF;
     wbg-color: #051020CC;
     w-border: 2px solid;
-    w-border-color: #FFFFFFFF;
+    w-border-color: #1080eeee;
     w-padding: 12px;
 }
 

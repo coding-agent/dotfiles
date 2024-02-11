@@ -1,13 +1,9 @@
 {
-  "spacing": 4,
+  "spacing": 0,
   "layer": "top",
   "modules-left": [
-    "hyprland/workspaces",
-    //"river/tags",
-    "hyprland/window"
-    //"river/window"
-  ],
-  "modules-center": [
+    "river/tags",
+    "river/window"
   ],
   "modules-right": [
     "network",
@@ -20,6 +16,9 @@
     "clock",
     "tray"
   ],
+  "river/tags": {
+    "num-tags": 5
+  },
   "mpris": {
     "format": "{status_icon} {dynamic}",
     "dynamic-order": [
@@ -52,7 +51,9 @@
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%d %B %Y}",
-    "tooltip-format": "{calendar}", 
+    "tooltip-format": "<span font='HeavyData Nerd Font Bold 13'><big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt></span>",
+    "today-format": "<span color='#fefeaa'><b><u>{}</u></b></span>",
+    "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
   	"actions": {
   		"on-click-right": "mode",
   		"on-click-forward": "tz_up",
