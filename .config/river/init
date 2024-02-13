@@ -1,11 +1,12 @@
 #!/bin/sh
 
-riverctl map normal Super+Shift Return spawn 'foot'
+riverctl unmap normal Super Return
+riverctl map normal Super Return spawn 'foot'
 riverctl map normal Super B spawn 'firefox' 
 riverctl map normal Super E spawn 'thunar'
 riverctl map normal Super W spawn 'wallpickr'
 riverctl map normal Super Space spawn 'rofi -show drun'
-riverctl map normal Super Return spawn 'swaylock'
+riverctl map normal Super Return spawn ~/scripts/lock_screen_rand_wp.sh
 riverctl map normal Super M exit
 riverctl map normal Super C close
 
@@ -25,9 +26,6 @@ riverctl map normal Super Comma focus-output previous
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
-
-# Super+Return to bump the focused view to the top of the layout stack
-riverctl map normal Super Return zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
@@ -102,17 +100,11 @@ riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 riverctl declare-mode passthrough
 riverctl keyboard-layout pt
 
-# Super+F11 to enter passthrough mode
-riverctl map normal Super F11 enter-mode passthrough
+riverctl map normal Super P enter-mode passthrough
+riverctl map passthrough Super P enter-mode normal
 
-# Super+F11 to return to normal mode
-riverctl map passthrough Super F11 enter-mode normal
-
-# Various media key mapping examples for both normal and locked mode which do
-# not have a modifier
 for mode in normal locked
 do
-    # Eject the optical drive (well if you still have one that is)
     riverctl map $mode None XF86Eject spawn 'eject -T'
 
     riverctl map $mode None XF86AudioRaiseVolume  spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
@@ -135,7 +127,7 @@ riverctl map normal Super None spawn "grim $HOME/media/images/screenshot/$(date 
 # start up scripts
 waybar &
 hyprpaper &
-swayidle -w timeout 150 'swaylock -f' timeout 200 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' &
+swayidle -w timeout 150 exec ~/lock_screen_rand_wp.sh &
 gsettings set org.gnome.desktop.interface cursor-theme darkbolt-cursor &&
 gsettings set org.gnome.desktop.wm.preferences button-layout ""
 
@@ -145,12 +137,10 @@ riverctl border-color-focused 0x1080ee
 riverctl border-color-unfocused 0x595959
 riverctl focus-follows-cursor always
 riverctl input pointer-1267-12541-ELAN0712:00_04F3:30FD_Touchpad natural-scroll enabled
+riverctl input pointer-1267-12541-ELAN0712:00_04F3:30FD_Touchpad tap enabled
 
-# Set keyboard repeat rate
 riverctl set-repeat 50 300
-
-# Make all views with app-id "bar" and any title use client-side decorations
-riverctl rule-add -app-id "bar" csd
+riverctl hide-cursor when-typing enabled
 
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+rivertile -view-padding 6 -outer-padding 6 -main-count 2 -main-ratio 0.5 &

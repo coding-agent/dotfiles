@@ -1,5 +1,5 @@
 {
-  "spacing": 0,
+  "spacing": 2,
   "layer": "top",
   "modules-left": [
     "river/tags",
@@ -87,7 +87,7 @@
       "warning": 50,
       "critical": 20
     },
-    "format": "{capacity}% {icon}",
+    "format": "{capacity}% {icon} ",
     "format-charging": "{capacity}% 󰂄",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",

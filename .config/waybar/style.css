@@ -3,7 +3,7 @@
 * {
 	border: none;
 	border-radius: 0;
-	font-family: "HeavyData Nerd Font 14";
+    font-family: "HeavyData Nerd Font";
 	min-height: 18px;
 	transition: transform 250ms ease-in-out;
 }
@@ -27,12 +27,19 @@ window#waybar.hidden {
 	background: @base;
 }
 
-#workspaces button,
-#tags button{
+#workspaces button{
     padding: 10px;
 	transition: none;
 	color: @text;
 	background: @base;
+	font-size: 16px;
+}
+
+#tags button {
+    padding: 10px;
+	transition: none;
+	color: @text;
+    background: transparent;
 	font-size: 16px;
 }
 
@@ -49,6 +56,19 @@ window#waybar.hidden {
 	text-shadow: inherit;
 	color: @subtext;
 	background: white;
+}
+
+#tags button.occupied{
+    background: @base;
+}
+
+#tags button.urgent{
+    background: @warning;
+    animation-name: warning-blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #pulseaudio, #mpris, 
