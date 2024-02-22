@@ -12,6 +12,8 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'norcalli/nvim-colorizer.lua'
 
+    use {'akinsho/git-conflict.nvim', tag = "*"}
+
     use {
   	'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	-- or                            , branch = '0.1.x',
