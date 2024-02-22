@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
     use 'wakatime/vim-wakatime'
     use 'nvim-lualine/lualine.nvim'
     use 'norcalli/nvim-colorizer.lua'
+    use 'lewis6991/gitsigns.nvim'
 
     use {'akinsho/git-conflict.nvim', tag = "*"}
 
