@@ -71,8 +71,6 @@ fn activate(app: *c.GtkApplication, state: *State) callconv(.C) void {
         );
     }
 
-    std.debug.print("{s}", .{wallpapers_list.?});
-
     const adjustement = c.gtk_adjustment_new(0, 0, 0, 1, 1, 200);
     const scrolled_window = c.gtk_scrolled_window_new();
     const vport = c.gtk_viewport_new(adjustement, null);

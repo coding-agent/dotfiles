@@ -1,6 +1,7 @@
 local lfs = require("lfs")
 
-local function listDirectories(path)
+local function listDirectories()
+    local path = "scripts/"
     local currDir = lfs.currentdir()
     local dirList = {}
 
@@ -22,7 +23,7 @@ local function buildZigScripts(dirs)
         local zig_module = dir:match("[^" .. package.config:sub(1, 1) .. "]+/?$")
 
         lfs.chdir(dir)
-        local success, _, _ = os.execute("zig build -Doptimize=ReleaseFast -p ~/.local/bin > /dev/null 2>&1 &")
+        local success, _, _ = os.execute("zig build -Doptimize=ReleaseFast -p ~/.local/ > /dev/null 2>&1 &")
         if success then
             print("\27[34m" .. zig_module .. "\27[0m" .. " built successfully successfully")
         else
@@ -31,6 +32,6 @@ local function buildZigScripts(dirs)
     end
 end
 
-os.execute("exec river")
-local dirList = listDirectories("scripts/")
-buildZigScripts(dirList)
+os.execute("river")
+
+buildZigScripts(listDirectories())
