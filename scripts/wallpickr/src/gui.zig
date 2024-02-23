@@ -8,6 +8,10 @@ const c = ffi.c;
 const WidgetData = struct {
     win: *c.GtkWindow,
     path: *[]const u8,
+    // this 2 below are a work around until I find a way to get signals
+    // for focused in buttons or replace buttons
+    next: *[]const u8,
+    prev: *[]const u8,
 };
 
 fn connectSignal(instance: c.gpointer, detailed_signal: [*c]const c.gchar, c_handler: c.GCallback, data: c.gpointer) void {
@@ -49,10 +53,15 @@ fn activate(app: *c.GtkApplication, state: *State) callconv(.C) void {
         c.gtk_grid_attach(@ptrCast(grid), @ptrCast(button), @as(c_int, @intCast(i)), 0, 1, 1);
         const eck = c.gtk_event_controller_key_new();
         c.gtk_widget_add_controller(button, eck);
-        const data = state.arena.create(WidgetData) catch @panic("foo");
+
+        const data = state.arena.create(WidgetData) catch |err| @panic(@errorName(err));
+        const prev_index: usize = if (i > 0) i - 1 else i;
+        const next_index: usize = if (i < wallpapers_list.?.len - 1) i + 1 else i;
         data.* = .{
             .win = @ptrCast(window),
             .path = wp,
+            .next = &wallpapers_list.?[next_index],
+            .prev = &wallpapers_list.?[prev_index],
         };
         connectSignal(
             eck,
@@ -61,6 +70,8 @@ fn activate(app: *c.GtkApplication, state: *State) callconv(.C) void {
             @ptrCast(data),
         );
     }
+
+    std.debug.print("{s}", .{wallpapers_list.?});
 
     const adjustement = c.gtk_adjustment_new(0, 0, 0, 1, 1, 200);
     const scrolled_window = c.gtk_scrolled_window_new();
@@ -111,14 +122,21 @@ fn handleClicked(
     state: c.GdkModifierType,
     data: *WidgetData,
 ) callconv(.C) c.gboolean {
+    _ = keycode; // autofix
     _ = eck;
-    _ = keycode;
     _ = state;
 
+    // this workaround GDK_KEY_leftarrow and GDK_KEY_rightarrow
+    // are not corresponding to the inputs
+    if (keyval == 65363) {
+        socket.setWallpaperToCurrentMonitor(std.heap.c_allocator, data.next.*) catch |err| @panic(@errorName(err));
+    }
+    if (keyval == 65361) {
+        socket.setWallpaperToCurrentMonitor(std.heap.c_allocator, data.prev.*) catch |err| @panic(@errorName(err));
+    }
     if (keyval == c.GDK_KEY_Return) {
-        const ally = std.heap.c_allocator;
         c.gtk_window_close(data.win);
-        socket.setWallpaperToCurrentMonitor(ally, data.path.*) catch |err| @panic(@errorName(err));
+        socket.setWallpaperToCurrentMonitor(std.heap.c_allocator, data.path.*) catch |err| @panic(@errorName(err));
         return 1;
     }
     return 0;
