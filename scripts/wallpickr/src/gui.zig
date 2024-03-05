@@ -22,16 +22,6 @@ pub const State = struct {
     arena: std.mem.Allocator,
 };
 
-fn pixAverage(pixbuf: c.GtkPixbuf) void {
-    _ = pixbuf;
-    var r: *c.guchar = null;
-    var g: *c.guchar = null;
-    var b: *c.guchar = null;
-    r = 1;
-    g = 1;
-    b = 1;
-}
-
 fn activate(app: *c.GtkApplication, state: *State) callconv(.C) void {
     const window = c.gtk_application_window_new(app);
     c.gtk_window_set_title(@ptrCast(window), "");
@@ -120,21 +110,21 @@ fn handleClicked(
     state: c.GdkModifierType,
     data: *WidgetData,
 ) callconv(.C) c.gboolean {
-    _ = keycode; // autofix
+    _ = keycode;
     _ = eck;
     _ = state;
 
     // this workaround GDK_KEY_leftarrow and GDK_KEY_rightarrow
     // are not corresponding to the inputs
     if (keyval == 65363) {
-        socket.setWallpaperToCurrentMonitor(std.heap.c_allocator, data.next.*) catch |err| @panic(@errorName(err));
+        socket.setWallpaperToCurrentMonitorAestuarium(std.heap.c_allocator, data.next.*) catch |err| @panic(@errorName(err));
     }
     if (keyval == 65361) {
-        socket.setWallpaperToCurrentMonitor(std.heap.c_allocator, data.prev.*) catch |err| @panic(@errorName(err));
+        socket.setWallpaperToCurrentMonitorAestuarium(std.heap.c_allocator, data.prev.*) catch |err| @panic(@errorName(err));
     }
     if (keyval == c.GDK_KEY_Return) {
         c.gtk_window_close(data.win);
-        socket.setWallpaperToCurrentMonitor(std.heap.c_allocator, data.path.*) catch |err| @panic(@errorName(err));
+        socket.setWallpaperToCurrentMonitorAestuarium(std.heap.c_allocator, data.path.*) catch |err| @panic(@errorName(err));
         return 1;
     }
     return 0;

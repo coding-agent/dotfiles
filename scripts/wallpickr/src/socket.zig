@@ -32,7 +32,7 @@ fn getActiveMonitor(alloc: Allocator, signature: ?[]const u8) ![]const u8 {
     }
 }
 
-pub fn setWallpaperToCurrentMonitor(alloc: Allocator, path: []const u8) !void {
+pub fn setWallpaperToCurrentMonitorHyprland(alloc: Allocator, path: []const u8) !void {
     var arena = std.heap.ArenaAllocator.init(alloc);
     defer arena.deinit();
 
@@ -68,4 +68,32 @@ pub fn setWallpaperToCurrentMonitor(alloc: Allocator, path: []const u8) !void {
         _ = try stream.read(buf);
         break :hyprpaper_ipc;
     };
+}
+
+pub fn setWallpaperToCurrentMonitorAestuarium(alloc: Allocator, path: []const u8) !void {
+    var arena = std.heap.ArenaAllocator.init(alloc);
+    defer arena.deinit();
+
+    var buf: [4096]u8 = undefined;
+
+    const env = std.os.getenv("XDG_RUNTIME_DIR") orelse return error.MissingXDGRuntimePath;
+    // TODO make aestuarium inform about the focused monitor
+    const active_monitor = "eDP-1";
+
+    const aestuarium_socket_path =
+        try std.fs.path.join(alloc, &.{ env, "aestuarium.sock" });
+
+    const stream = try std.net.connectUnixSocket(aestuarium_socket_path);
+    defer stream.close();
+
+    const wallpaper_msg = try std.mem.concat(arena.allocator(), u8, &[_][]const u8{
+        "wallpaper ",
+        active_monitor,
+        "=",
+        path,
+    });
+
+    _ = try stream.write(wallpaper_msg);
+    const bytes_len = try stream.read(&buf);
+    std.log.info("{s}", .{buf[0..bytes_len]});
 }

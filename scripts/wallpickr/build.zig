@@ -14,6 +14,11 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     }).module("ini");
 
+    const zigimg_module = b.dependency("zigimg", .{
+        .target = target,
+        .optimize = optimize,
+    }).module("zigimg");
+
     const exe = b.addExecutable(.{
         .name = "wallpickr",
         .root_source_file = .{ .path = "src/main.zig" },
@@ -23,6 +28,7 @@ pub fn build(b: *std.Build) void {
 
     exe.root_module.addImport("known-folders", kf_module);
     exe.root_module.addImport("ini", ini_module);
+    exe.root_module.addImport("zigimg", zigimg_module);
     exe.linkSystemLibrary("gtk4");
     exe.linkLibC();
 

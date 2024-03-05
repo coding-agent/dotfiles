@@ -6,6 +6,8 @@ riverctl map normal Super B spawn 'firefox'
 riverctl map normal Super E spawn 'thunar'
 riverctl map normal Super W spawn 'wallpickr'
 riverctl map normal Super Space spawn 'rofi -show drun'
+riverctl map normal Super+Shift Space spawn 'rofi -show run'
+riverctl map normal Super N spawn 'nheko'
 riverctl map normal Super Delete spawn ~/scripts/lock_screen_rand_wp.sh
 riverctl map normal Super M exit
 riverctl map normal Super C close
@@ -126,8 +128,8 @@ riverctl map normal Super None spawn "grim $HOME/media/images/screenshot/$(date 
 
 # start up scripts
 waybar &
-hyprpaper &
-swayidle -w timeout 150 exec ~/lock_screen_rand_wp.sh &
+aestuarium &
+swayidle -w timeout 150 ~/lock_screen_rand_wp.sh &
 gsettings set org.gnome.desktop.interface cursor-theme darkbolt-cursor &&
 gsettings set org.gnome.desktop.wm.preferences button-layout ""
 
@@ -142,5 +144,8 @@ riverctl input pointer-1267-12541-ELAN0712:00_04F3:30FD_Touchpad tap enabled
 riverctl set-repeat 50 300
 riverctl hide-cursor when-typing enabled
 
+export XDG_CURRENT_DESKTOP=river 
+dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+systemctl --user import-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 -main-count 2 -main-ratio 0.5 &

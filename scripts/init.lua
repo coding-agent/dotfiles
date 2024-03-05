@@ -35,3 +35,4 @@ end
 os.execute("river")
 
 buildZigScripts(listDirectories())
+

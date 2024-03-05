@@ -2,8 +2,7 @@
   "spacing": 2,
   "layer": "top",
   "modules-left": [
-    "river/tags",
-    "river/window"
+    "river/tags"
   ],
   "modules-right": [
     "network",
@@ -17,7 +16,7 @@
     "tray"
   ],
   "river/tags": {
-    "num-tags": 5
+    "num-tags": 9
   },
   "mpris": {
     "format": "{status_icon} {dynamic}",

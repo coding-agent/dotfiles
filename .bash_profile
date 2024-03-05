@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 if [[ -z "$WAYLAND_DISPLAY" ]]; then
-    lua init.lua
+    lua scripts/init.lua
 fi
