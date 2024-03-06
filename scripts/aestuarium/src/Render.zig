@@ -126,10 +126,12 @@ pub fn setWallpaper(self: *Render, path: []const u8) !void {
     var image = try zigimg.Image.fromFilePath(self.allocator, path);
     defer image.deinit();
 
-    std.debug.print("{any}\n", .{image.pixelFormat()});
-    if (image.pixelFormat() != .rgba32) {
-        return error.FormatUnsuported;
-    }
+    //only support RGB AND RGBA yet
+    const image_format: c_int = try switch (image.pixelFormat()) {
+        .rgba32, .rgba64 => c.GL_RGBA,
+        .rgb24, .rgb48, .rgb565, .rgb555 => c.GL_RGB,
+        else => error.FormatUnsuported,
+    };
 
     const width: c_int = @intCast(image.width);
     const height: c_int = @intCast(image.height);
@@ -251,11 +253,11 @@ pub fn setWallpaper(self: *Render, path: []const u8) !void {
     c.glTexImage2D(
         c.GL_TEXTURE_2D,
         0,
-        c.GL_RGBA,
+        image_format,
         width,
         height,
         0,
-        c.GL_RGBA,
+        @intCast(image_format),
         c.GL_UNSIGNED_BYTE,
         texture.ptr,
     );
