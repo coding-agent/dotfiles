@@ -34,5 +34,5 @@ end
 
 os.execute("river")
 
-buildZigScripts(listDirectories())
+buildzigscripts(listdirectories())
 

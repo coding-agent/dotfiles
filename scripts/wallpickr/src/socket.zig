@@ -32,7 +32,7 @@ fn getActiveMonitor(alloc: Allocator, signature: ?[]const u8) ![]const u8 {
     }
 }
 
-pub fn setWallpaperToCurrentMonitorHyprland(alloc: Allocator, path: []const u8) !void {
+pub fn setWallpaperToCurrentMonitorHyprpaper(alloc: Allocator, path: []const u8) !void {
     var arena = std.heap.ArenaAllocator.init(alloc);
     defer arena.deinit();
 
@@ -83,8 +83,10 @@ pub fn setWallpaperToCurrentMonitorAestuarium(alloc: Allocator, path: []const u8
     const aestuarium_socket_path =
         try std.fs.path.join(alloc, &.{ env, "aestuarium.sock" });
 
-    const stream = try std.net.connectUnixSocket(aestuarium_socket_path);
-    defer stream.close();
+    const preload_msg = try std.mem.concat(arena.allocator(), u8, &[_][]const u8{
+        "preload ",
+        path,
+    });
 
     const wallpaper_msg = try std.mem.concat(arena.allocator(), u8, &[_][]const u8{
         "wallpaper ",
@@ -93,7 +95,28 @@ pub fn setWallpaperToCurrentMonitorAestuarium(alloc: Allocator, path: []const u8
         path,
     });
 
-    _ = try stream.write(wallpaper_msg);
-    const bytes_len = try stream.read(&buf);
-    std.log.info("{s}", .{buf[0..bytes_len]});
+    const unload_msg = "unload all";
+
+    var bytes: usize = 0;
+    {
+        const stream = try std.net.connectUnixSocket(aestuarium_socket_path);
+        defer stream.close();
+        _ = try stream.write(preload_msg);
+        bytes = try stream.read(&buf);
+        std.log.info("{s}", .{buf[0..bytes]});
+    }
+    {
+        const stream = try std.net.connectUnixSocket(aestuarium_socket_path);
+        defer stream.close();
+        _ = try stream.write(wallpaper_msg);
+        bytes = try stream.read(&buf);
+        std.log.info("{s}", .{buf[0..bytes]});
+    }
+    {
+        const stream = try std.net.connectUnixSocket(aestuarium_socket_path);
+        defer stream.close();
+        _ = try stream.write(unload_msg);
+        bytes = try stream.read(&buf);
+        std.log.info("{s}", .{buf[0..bytes]});
+    }
 }
