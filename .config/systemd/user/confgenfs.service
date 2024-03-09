@@ -1,0 +1,10 @@
+[Unit]
+Description=ConfgenFS
+
+[Service]
+Type=exec
+ExecStart="/home/coding-agent/.local/bin/confgenfs" "%h/dev/dotfiles/confgen.lua" "%h/confgenfs"
+
+[Install]
+WantedBy=default.target
+

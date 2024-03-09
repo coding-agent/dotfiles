@@ -132,6 +132,7 @@ aestuarium &
 swayidle -w timeout 150 ~/lock_screen_rand_wp.sh &
 gsettings set org.gnome.desktop.interface cursor-theme darkbolt-cursor &&
 gsettings set org.gnome.desktop.wm.preferences button-layout ""
+gsettings set org.gnome.desktop.interface font-name "Iosevka NFM 12"
 
 # Set background and border color
 riverctl background-color 0x10002f

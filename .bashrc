@@ -5,6 +5,3 @@ export XDG_CURRENT_DESKTOP=river
 
 alias rm='rm -i'
 alias set-cursor='gsettings set org.gnome.desktop.interface cursor-theme'
-
-gsettings set org.gnome.desktop.interface font-name "Sans 11"
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
