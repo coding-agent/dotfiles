@@ -2,7 +2,7 @@ indicator
 ignore-empty-password
 indicator-thickness=2
 indicator-radius=100
-image=~/dev/wallpapers/rem_wallpaper.jpeg
+image=<% opt.wallpapers_path %>/rem_wallpaper.jpeg
 clock
 effect-blur=7x5
 effect-vignette=0.5:0.5
@@ -13,4 +13,4 @@ key-hl-color=bb60ff
 text-color=ffffff
 grace=2
 fade-in=0.5
-font=HeavyData Nerd Font
+font=<% opt.font %>

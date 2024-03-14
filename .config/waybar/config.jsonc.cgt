@@ -2,7 +2,11 @@
   "spacing": 2,
   "layer": "top",
   "modules-left": [
+    <! if opt.compositor == "river" then !>
     "river/tags"
+    <! else !>
+    "hyprland/workspaces"
+    <! end !>
   ],
   "modules-right": [
     "network",
@@ -50,7 +54,7 @@
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%d %B %Y}",
-    "tooltip-format": "<span font='HeavyData Nerd Font Bold 13'><big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt></span>",
+    "tooltip-format": "<span font='<% opt.font %> Bold 12'><big>{:%d %B}</big>\n<tt><small>{calendar}</small></tt></span>",
     "today-format": "<span color='#fefeaa'><b><u>{}</u></b></span>",
     "format-calendar": "<span color='#ecc6d9'><b>{}</b></span>",
   	"actions": {

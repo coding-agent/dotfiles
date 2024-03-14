@@ -1,0 +1,5 @@
+preload = <% opt.wallpaper %>
+
+wallpaper = ,contain:<% opt.wallpaper %>
+splash = false
+ipc = on

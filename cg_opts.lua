@@ -1,19 +1,52 @@
-local opts = {}
+local opt = {}
 
-opts.font = "HeavyData Nerd Font"
-opts.font_term = "Iosevka NFM"
-opts.font_size = "12"
+opt.default_editor = "nvim"
 
-opts.gtk_theme = "Breeze-Dark"
-opts.icon_theme = "Surn-Arch-Blue"
+opt.font = "HeavyData Nerd Font"
+opt.font_term = "Iosevka NFM"
+opt.font_size = "12"
 
-opts.scripts_folder = os.getenv("HOME") .. "/scripts"
+opt.gtk_theme = "Breeze-Dark"
+opt.icon_theme = "Surn-Arch-Blue"
 
-opts.cursor = {
+opt.scripts_folder = os.getenv("HOME") .. "/scripts"
+
+opt.cursor = {
     theme = "darkbolt-cursor",
     size = 24,
 }
 
-opts.wallpaper = os.getenv("HOME") .. "/dev/wallpapers/aqua.png"
+opt.wallpapers_path = os.getenv("HOME") .. "/dev/wallpapers"
+opt.wallpaper = opt.wallpapers_path .. "/aqua.png"
 
-return opts
+opt.term = {
+    font = "Iosevka NFM",
+    alpha = 0.7,
+    foreground = "bbbbbb",
+    background = "090a18",
+    regular0 = "090a18",
+    regular1 = "f4fa8c",
+    regular2 = "f4fa8c",
+    regular3 = "bfa51a",
+    regular4 = "4ab2d7",
+    regular5 = "f4fa8c",
+    regular6 = "f4fa8c",
+    regular7 = "bfa51a",
+    bright0 = "2b1329",
+    bright1 = "faff75",
+    bright2 = "60ba80",
+    bright3 = "de9b1d",
+    bright4 = "8ba7ea",
+    bright5 = "f4fa8c",
+    bright6 = "f4fa8c",
+    bright7 = "bfa51a",
+    selection_foreground = "ffffff",
+    selection_background = "4C637A",
+    urls = "43EDC9",
+    cursor_foreground = "000000",
+    cursor_background = "ccccff",
+    border_focused = "1080ee",
+    border_unfocused = "595959"
+}
+
+return opt

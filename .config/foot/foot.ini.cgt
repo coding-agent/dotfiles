@@ -1,0 +1,29 @@
+font=<% opt.font_term %>:<! if opt.compositor == "river" then !>size=16<! else !>size=11<! end !>
+
+[cursor]
+color=<% opt.term.cursor_foreground %> <% opt.term.cursor_background %>
+
+[colors]
+alpha=<% opt.term.alpha %>
+foreground = <% opt.term.foreground %>
+background = <% opt.term.background %>
+regular0 = <% opt.term.regular0 %>
+regular1 = <% opt.term.regular1 %>
+regular2 = <% opt.term.regular2 %>
+regular3 = <% opt.term.regular3 %>
+regular4 = <% opt.term.regular4 %>
+regular5 = <% opt.term.regular5 %>
+regular6 = <% opt.term.regular6 %>
+regular7 = <% opt.term.regular7 %>
+bright0 = <% opt.term.bright0 %>
+bright1 = <% opt.term.bright1 %>
+bright2 = <% opt.term.bright2 %>
+bright3 = <% opt.term.bright3 %> 
+bright4 = <% opt.term.bright4 %> 
+bright5 = <% opt.term.bright5 %>
+bright6 = <% opt.term.bright6 %> 
+bright7 = <% opt.term.bright7 %>
+selection-foreground = <% opt.term.selection_foreground %>  
+selection-background = <% opt.term.selection_background %>
+
+urls=<% opt.term.urls %>

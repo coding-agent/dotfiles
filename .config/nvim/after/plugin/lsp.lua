@@ -33,6 +33,13 @@ require('mason-lspconfig').setup({
   },
 })
 
+lsp.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»'
+})
+
 local cmp = require('cmp')
 
 cmp.setup({

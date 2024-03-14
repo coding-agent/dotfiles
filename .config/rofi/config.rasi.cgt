@@ -24,7 +24,7 @@ window {
     border: @w-border;
     border-color: @w-border-color;
     padding: @w-padding;
-    icon-theme: "Surn-Arch-Blue";
+    icon-theme: "<% opt.icon_theme%>";
 }
 
 prompt {
@@ -37,7 +37,7 @@ inputbar {
 }
 
 entry {
-    placeholder: "Tell me what to open";
+    placeholder: "Tell me what to open...";
     text-color: @fg-color;
     placeholder-color: @fgp-color;
 }

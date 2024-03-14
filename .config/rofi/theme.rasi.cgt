@@ -1,5 +1,5 @@
 * {
-    font: "HeavyData Nerd Font 13";
+    font: "<% opt.font %> 12";
     g-spacing: 10px;
     g-margin: 0;
     b-color: #000000FF;
@@ -9,7 +9,7 @@
     hl-color: #FFFFFFFF;
     hlt-color: #000000FF;
     alt-color: #000010FF;
-    wbg-color: #051020CC;
+    wbg-color: #<% opt.term.background %>CC;
     w-border: 2px solid;
     w-border-color: #1080eeee;
     w-padding: 12px;

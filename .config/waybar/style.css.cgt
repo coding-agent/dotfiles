@@ -3,7 +3,7 @@
 * {
 	border: none;
 	border-radius: 0;
-    font-family: "HeavyData Nerd Font";
+    font-family: "<% opt.font %>";
 	min-height: 18px;
 	transition: transform 250ms ease-in-out;
 }
@@ -78,8 +78,7 @@ window#waybar.hidden {
 #tray, #window,
 #network
 {
-	padding-left: 8px;
-	padding-right: 8px;
+	padding: 8px;
 	transition: transform 250ms ease-in-out;
 	color: @text;
 	background: @base;

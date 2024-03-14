@@ -1,0 +1,6 @@
+[Settings] 
+gtk-theme-name=<% opt.gtk_theme %>
+gtk-icon-theme-name=<% opt.icon_theme %>
+gtk-font-name=<% opt.term.font %> 12
+gtk-cursor-theme-name=<% opt.cursor.theme %>
+gtk-cursor-theme-size=0
