@@ -123,7 +123,7 @@ do
 done
 
 # Recording
-riverctl map normal Super Print spawn 'obs --startrecording --minimize-to-tray'
+riverctl map normal Super Print spawn 'obs --startrecording'
 riverctl map normal Super None spawn "grim $HOME/media/images/screenshot/$(date +'%screenshot.jpeg') | wl-copy"
 
 # pre start up scripts
@@ -132,12 +132,11 @@ echo 'cg.opt.compositor = "river"' >~/confgenfs/_cgfs/eval
 # start up scripts
 waybar &
 aestuarium &
-swayidle -w timeout 150 ~/lock_screen_rand_wp.sh timeout 200 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' &
 gsettings set org.gnome.desktop.interface gtk-theme "Breeze-Dark" &&
 gsettings set org.gnome.desktop.interface cursor-theme darkbolt-cursor &&
 gsettings set org.gnome.desktop.wm.preferences button-layout ""
 gsettings set org.gnome.desktop.interface font-name "Iosevka NFM 12"
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
 
 # Set background and border color
 riverctl background-color 0x10002f
@@ -148,10 +147,12 @@ riverctl input pointer-1267-12541-ELAN0712:00_04F3:30FD_Touchpad natural-scroll 
 riverctl input pointer-1267-12541-ELAN0712:00_04F3:30FD_Touchpad tap enabled
 
 riverctl set-repeat 50 300
-riverctl hide-cursor when-typing enabled
+riverctl hide-cursor when-typing disabled
 
 export XDG_CURRENT_DESKTOP=river 
 dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 systemctl --user import-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 -main-count 2 -main-ratio 0.5 &
+rivertile -view-padding 6 -outer-padding 6 -main-count 4 -main-ratio 0.5 &
+
+swayidle -w timeout 150 exec 'swaylock -f -i $(find $HOME/dev/wallpapers/ -type f | shuf -n 1)' timeout 200 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' &

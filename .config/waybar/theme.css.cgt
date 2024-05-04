@@ -1,9 +1,11 @@
-@define-color base   	rgba(46, 142, 218, 0.2);
-@define-color active   	rgba(50, 150, 250, 0.4);	
+@define-color base   	#050505;
+@define-color active    #202020;	
 @define-color warning   rgba(250, 250, 5, 0.2);	
 @define-color warning_blink   rgba(250, 250, 5, 0.5);	
 @define-color critical  rgba(250, 5, 5, 0.2);	
 @define-color critical_blink  rgba(250, 5, 5, 0.5);	
+@define-color charging  rgba(5, 250, 5, 0.2);	
+@define-color charging_blink  rgba(5, 250, 5, 0.5);	
 @define-color crust  	grey;
 
 @define-color text     	white;

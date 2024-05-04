@@ -3,7 +3,7 @@ local opt = {}
 opt.default_editor = "nvim"
 
 opt.font = "HeavyData Nerd Font"
-opt.font_term = "Iosevka NFM"
+opt.font_term = "Hurmit Nerd Font"
 opt.font_size = "12"
 
 opt.gtk_theme = "Breeze-Dark"
@@ -17,11 +17,11 @@ opt.cursor = {
 }
 
 opt.wallpapers_path = os.getenv("HOME") .. "/dev/wallpapers"
-opt.wallpaper = opt.wallpapers_path .. "/aqua.png"
+opt.wallpaper = opt.wallpapers_path .. "/zig.gif"
 
 opt.term = {
-    font = "Iosevka NFM",
-    alpha = 0.7,
+    font = "Hurmit Nerd Font",
+    alpha = 0.95,
     foreground = "bbbbbb",
     background = "090a18",
     regular0 = "090a18",

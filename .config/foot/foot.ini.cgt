@@ -1,4 +1,4 @@
-font=<% opt.font_term %>:<! if opt.compositor == "river" then !>size=16<! else !>size=11<! end !>
+font=<% opt.font_term %>:<! if opt.compositor == "river" then !>size=15<! else !>size=11<! end !>
 
 [cursor]
 color=<% opt.term.cursor_foreground %> <% opt.term.cursor_background %>

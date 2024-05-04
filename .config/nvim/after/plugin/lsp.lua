@@ -26,7 +26,8 @@ require('mason-lspconfig').setup({
     'html',
     'cssls',
     'bashls',
-    'pyre'
+    'pyre',
+    'glsl_analyzer'
   },
   handlers = {
     lsp.default_setup,

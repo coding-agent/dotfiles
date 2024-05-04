@@ -1,65 +1,32 @@
 @import "theme.css";
 
 * {
-	border: none;
-	border-radius: 0;
+    border: none;
+    border-radius: 0px;
     font-family: "<% opt.font %>";
-	min-height: 18px;
 	transition: transform 250ms ease-in-out;
 }
 
 window#waybar {
-	background: rgba(1, 1, 1, 0.5);
+    background-color: #050505;
+    padding: 20px;
 }
 
 window#waybar.hidden {
-	opacity: 0.2;
+    padding: 20px;
 }
 
-#window {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-#workspaces, #tags  {
-	background: @base;
-}
-
-#workspaces button{
+#workspaces button,
+#tags button{
     padding: 10px;
-	transition: none;
-	color: @text;
-	background: @base;
-	font-size: 16px;
-}
-
-#tags button {
-    padding: 10px;
-	transition: none;
-	color: @text;
-    background: transparent;
-	font-size: 16px;
-}
-
-#workspaces button.active,
-#tags button.focused {
-	color: @text;
-   	background: @active;
+	background: transparent;
 }
 
 #workspaces button:hover,
-#tags button:hover{
-	transition: none;
-	box-shadow: inherit;
-	text-shadow: inherit;
-	color: @subtext;
-	background: white;
-}
-
-#tags button.occupied{
-    background: @base;
+#tags button:hover,
+#clock:hover
+{
+    color: #F7A41D;
 }
 
 #tags button.urgent{
@@ -71,6 +38,11 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
+#tags button.focused, 
+#tags button.occupied {
+    color: #F7A41D;
+}
+
 #pulseaudio, #mpris, 
 #temperature, #cpu,
 #memory, #battery,
@@ -79,9 +51,24 @@ window#waybar.hidden {
 #network
 {
 	padding: 8px;
-	transition: transform 250ms ease-in-out;
-	color: @text;
-	background: @base;
+	background: transparent;
+}
+
+#pulseaudio:hover, #mpris:hover, 
+#temperature:hover, #cpu:hover,
+#memory:hover, #battery:hover,
+#clock:hover, #gamemode:hover,
+#tray:hover, #window:hover,
+#network:hover
+{
+    color: #F7A41D;
+}
+#clock,
+#tags, 
+.modules-right {
+    border: 5px double white;
+    margin: 10px 0px;
+    border-radius: 100px;
 }
 
 #battery.warning {
@@ -102,20 +89,13 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
-#clock:hover {
-    color: @subtext;
-	background: white;
-}
-
-tooltip {
-    background: @base;
-}
-
-window#waybar.empty #window {
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-    background-color: transparent;
+#battery.charging {
+    background: @charging;
+    animation-name: charging-blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 @keyframes critical-blink {
@@ -127,5 +107,11 @@ window#waybar.empty #window {
 @keyframes warning-blink {
     to {
         background-color: @warning_blink;
+    }
+}
+
+@keyframes charging-blink {
+    to {
+        background-color: @charging_blink;
     }
 }

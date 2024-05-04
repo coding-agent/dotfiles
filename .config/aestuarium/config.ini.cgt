@@ -1,2 +1,10 @@
 [monitors]
 eDP-1=<% opt.wallpaper %>
+
+[shaders]
+vertex=vertex.glsl
+fragment=fragment.glsl
+
+[animations]
+loop=true
+fps=15
