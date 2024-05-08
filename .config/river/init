@@ -4,6 +4,7 @@ riverctl unmap normal Super Return
 riverctl map normal Super Return spawn 'foot'
 riverctl map normal Super B spawn 'brave' 
 riverctl map normal Super E spawn 'thunar'
+riverctl map normal Super O spawn 'obs'
 riverctl map normal Super W spawn 'wallpickr'
 riverctl map normal Super Space spawn 'rofi -show drun'
 riverctl map normal Super+Shift Space spawn 'rofi -show run'
