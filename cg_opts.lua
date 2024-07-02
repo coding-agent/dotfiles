@@ -21,7 +21,7 @@ opt.wallpaper = opt.wallpapers_path .. "/zig.gif"
 
 opt.term = {
     font = "Hurmit Nerd Font",
-    alpha = 0.95,
+    alpha = 0.8,
     foreground = "bbbbbb",
     background = "090a18",
     regular0 = "090a18",

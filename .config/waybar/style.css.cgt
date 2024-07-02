@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background-color: #050505;
+    background-color: transparent;
     padding: 20px;
 }
 
@@ -19,7 +19,7 @@ window#waybar.hidden {
 #workspaces button,
 #tags button{
     padding: 10px;
-	background: transparent;
+    background-color: #101010;
 }
 
 #workspaces button:hover,
@@ -61,14 +61,15 @@ window#waybar.hidden {
 #tray:hover, #window:hover,
 #network:hover
 {
+    background-color: #101010;
     color: #F7A41D;
 }
 #clock,
 #tags, 
 .modules-right {
     border: 5px double white;
+    background-color: #101010;
     margin: 10px 0px;
-    border-radius: 100px;
 }
 
 #battery.warning {

@@ -1,6 +1,5 @@
 cg.addPath(".config")
-cg.addPath("scripts")
-cg.addFile(".gtkrc-2.0")
+cg.addFile(".gtkrc-2.0.cgt")
 
 cg.opt = require "cg_opts"
 
