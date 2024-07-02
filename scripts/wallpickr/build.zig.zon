@@ -8,16 +8,16 @@
 
     .dependencies = .{
         .known_folders = .{
-            .url = "git+https://github.com/coding-agent/known-folders#2aa7f2e9855d45b20072e15107fb379b9380adbe",
-            .hash = "12209925016f4b5486a713828ead3bcc900fa4f039c93de1894aa7d5253f7633b92c",
+            .url = "git+https://github.com/ziglibs/known-folders#0ad514dcfb7525e32ae349b9acc0a53976f3a9fa",
+            .hash = "12209cde192558f8b3dc098ac2330fc2a14fdd211c5433afd33085af75caa9183147",
         },
         .ini = .{
-            .url = "git+https://github.com/coding-agent/ini#26e4fe7d3ecbe7235744c86c9b00e0f8735fc616",
-            .hash = "1220cd56f45f8a8300a8dc074c29075847bb061b84485a020ea6d73244dae50af518",
+            .url = "git+https://github.com/ziglibs/ini#da0af3a32e3403e3113e103767065cbe9584f505",
+            .hash = "1220d2557282a0362e5e58a4b53a7696220f85a41bf379f0c2b2b6e391a85972a514",
         },
         .zigimg = .{
-            .url = "https://github.com/zigimg/zigimg/archive/61862e6a37e70551cccd4113bf987eaf93b67601.tar.gz",
-            .hash = "1220a1ac633472925863401189e4de1cbf441736dd100c17c19a837ee0f31632d647",
+            .url = "git+https://github.com/zigimg/zigimg#d9dbbe22b5f7b5f1f4772169ed93ffeed8e8124d",
+            .hash = "122013646f7038ecc71ddf8a0d7de346d29a6ec40140af57f838b0a975c69af512b0",
         },
     },
 }

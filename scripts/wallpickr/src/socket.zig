@@ -38,7 +38,7 @@ pub fn setWallpaperToCurrentMonitorHyprpaper(alloc: Allocator, path: []const u8)
 
     const buf = try arena.allocator().alloc(u8, 100);
 
-    const instance_signature = std.os.getenv("HYPRLAND_INSTANCE_SIGNATURE");
+    const instance_signature = std.posix.getenv("HYPRLAND_INSTANCE_SIGNATURE");
     const active_monitor = try getActiveMonitor(arena.allocator(), instance_signature);
 
     const hyprpaper_socket_path =
@@ -76,7 +76,7 @@ pub fn setWallpaperToCurrentMonitorAestuarium(alloc: Allocator, path: []const u8
 
     var buf: [4096]u8 = undefined;
 
-    const env = std.os.getenv("XDG_RUNTIME_DIR") orelse return error.MissingXDGRuntimePath;
+    const env = std.posix.getenv("XDG_RUNTIME_DIR") orelse return error.MissingXDGRuntimePath;
     // TODO make aestuarium inform about the focused monitor
     const active_monitor = "eDP-1";
 
